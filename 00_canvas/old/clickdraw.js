@@ -1,6 +1,8 @@
 const canvas = document.getElementById("slate");
 const ctx = canvas.getContext("2d");
-
+var r = canvas.getBoundingClientRect();
+var x = r["x"];
+var y = r["y"];
 var dot = 0;
 var w = 50;
 var h = 100;
@@ -14,8 +16,8 @@ button.addEventListener('click',clear);
 
 var toggle = function(e){
 	if (dot == 0){
-		w = 5;
-		h = 5;
+		w = 1;
+		h = 1;
 		dot = 1;
 	}
 	else{
@@ -30,15 +32,8 @@ toggler.addEventListener('click',toggle);
 
 
 var draw = function(e){
-	if (Boolean(dot)){
-		ctx.beginPath();
-		ctx.ellipse(e.offsetX, e.offsetY,5,5,0,0,Math.PI*2);
-		ctx.fill();
-		ctx.closePath();
-	}
-	else {
-		ctx.fillRect(e.offsetX, e.offsetY, w,h);
-	}
+	console.log("(" + e.clientX + "," + e.clientY + ")");
+	ctx.fillRect(e.clientX - x, e.clientY - y, w,h);
 };
 
 canvas.addEventListener('click',draw);
