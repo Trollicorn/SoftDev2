@@ -1,3 +1,8 @@
+// Mohammed Uddin
+// SoftDev2 pd7
+// K0  I see a Red Door
+// 2019-01-30
+
 const canvas = document.getElementById("slate");
 const ctx = canvas.getContext("2d");
 
