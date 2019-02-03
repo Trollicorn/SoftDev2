@@ -11,6 +11,9 @@ var first = "yes"
 var prev = {"x":0, "y":0}
 var cbtn = document.getElementById("clear");
 
+var w = c.getAttribute("width");
+var h = c.getAttribute("height");
+
 //set the fill colors now
 ctx.fillStyle = "red";
 ctx.strokeStyle = "black";
@@ -20,7 +23,6 @@ cbtn.addEventListener('click', function () {
   ctx.clearRect(0, 0, w, h);
   first = "yes";
 });
-
 
 
 //adds event listener to canvas to draw on it when theres a click
