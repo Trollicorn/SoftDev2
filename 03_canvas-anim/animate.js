@@ -1,3 +1,8 @@
+// william lu but better --- Tina Wong and Mohammed Uddin
+// SoftDev2 pd7
+// K03 -- They lock us in the tower whenever we get caught ...which is often
+// 2019-02-04
+
 var c = document.getElementById("playground");
 var width = c.getAttribute("width");
 var height = c.getAttribute("height");
@@ -28,11 +33,8 @@ var draw = function(){
 
 var drawDot = function() {
   // change the way the radius is growing
-  if (growing == 1 && (radius >= c.width / 2 || radius >= c.height / 2)){
-    growing = -1;
-  }
-  else if (growing == -1 && radius <= 0) {
-    growing = 1;
+  if (radius == c.width / 2 || radius == c.height / 2 || radius == 0){
+    growing *= -1;
   }
   radius += growing;
 
