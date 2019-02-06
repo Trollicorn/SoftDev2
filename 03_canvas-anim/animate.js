@@ -11,6 +11,8 @@ var requestID;
 var radius = 1;
 var growing = 1;
 var status = "off";
+var w = c.width/2;
+var h = c.width/2;
 
 var stop = document.getElementById('stop');
 stop.addEventListener('click', function(e) {
@@ -33,7 +35,7 @@ var draw = function(){
 
 var drawDot = function() {
   // change the way the radius is growing
-  if (radius == c.width / 2 || radius == c.height / 2 || radius == 0){
+  if ((w - radius) * (h-radius) * radius == 0){ //if radius is = to width or height or 0, the entire thing will be 0
     growing *= -1;
   }
   radius += growing;
@@ -43,7 +45,7 @@ var drawDot = function() {
 
   // draw circle
   ctx.beginPath();
-  ctx.arc( c.width / 2, c.height / 2, radius, 0, 2 * Math.PI);
+  ctx.arc( w, h, radius, 0, 2 * Math.PI);
   ctx.stroke();
   ctx.fill();
   requestID = window.requestAnimationFrame(drawDot);
