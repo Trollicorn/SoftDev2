@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <title>Search Pokemon!</title>
+  </head>
+
+  <body>
+    {% set msgs = get_flashed_messages() %}
+    {% for each in msgs %}
+      <h3 style="color:red">Error: {{ each }}</h4>
+    {% endfor %}
+
+    <h1>Search Pokemon!</h1>
+
+    <form action = "/search" method="POST">
+      Enter server IP: <input type = "text" name = "mongo_server">
+      <br>
+      <input type="radio" name="search_option" value="type"> Type<br>
+      <input type="radio" name="search_option" value="name"> Name<br>
+      <input type="radio" name="search_option" value="weight"> Weight<br>
+      <input type="radio" name="search_option" value="height"> Height<br>
+      <input type="radio" name="search_option" value="evol_from"> Evolved From<br>
+      <input type="radio" name="search_option" value="evol_into"> Evolves Into<br>
+      Enter query: <input type = "text" name = "query">
+      <br>
+      <input type = "submit" name = "sub1">
+    </form>
+
+    {% for res in _ress %}
+      <h5> Name: {{res["name"]}}</h5>
+      <h5> Types:{% for ty in res["type"] %}{{ty}}{% endfor %}</h5>
+      <h5> Weight: {{res["weight"]}} </h5>
+      <h5> Height: {{res["height"]}} </h5>
+      <img src="{{res['img']}}" alt='{{res["name"]}}' height="100" width="100">
+      <hr>
+    {% endfor %}
+
+  </body>
+
+</html>
