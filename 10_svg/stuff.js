@@ -5,41 +5,45 @@
 
 //getting references to html elements
 var savage = document.getElementById("vimage");
-
-var first = "yes"
-var prev = {"x":0, "y":0}
+var creaty = true;
 
 savage.addEventListener('click',function(e){
   var cds = {"x":e.offsetX, "y":e.offsetY};
+  if (creaty){
+    circlify(cds.x,cds.y);
+  }else{
+    creaty = true;
+  }
+});
+
+var circlify = function(x,y){
   var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-  c.setAttribute("cx", cds.x);
-  c.setAttribute("cy", cds.y);
-  c.setAttribute("r", 10);
+  c.setAttribute("cx", x);
+  c.setAttribute("cy", y);
+  c.setAttribute("r", 20);
   c.setAttribute("fill", "purple");
   c.setAttribute("stroke", "black");
+  c.setAttribute("first", "yes");
+  c.addEventListener('click',function(e){
+    creaty = false;
+    if (c.getAttribute("first")=="yes"){
+      c.setAttribute("first","no");
+      c.setAttribute("fill","green");
+    }
+    else{
+      savage.removeChild(c);
+      x = Math.floor(Math.random()*500);
+      y = Math.floor(Math.random()*500);
+      circlify(x,y);
+    }
+  });
   savage.appendChild(c);
-
-  if (first != "yes"){ //if not first click, draw line to click
-    var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    line.setAttribute('x1', prev.x);
-    line.setAttribute('x2', cds.x);
-    line.setAttribute('y1', prev.y);
-    line.setAttribute('y2', cds.y);
-    line.setAttribute('stroke', 'black');
-    savage.appendChild(line);
-  }else{  //if first click, skip above
-    first = "no";
-  }
-  prev.x = cds.x;
-  prev.y = cds.y;
-});
+  return c;
+};
 
 oofers = document.getElementById("clear");
 oofers.addEventListener('click',function(){
   while (savage.lastChild){
     savage.removeChild(savage.lastChild);
   }
-  prev.x = 0;
-  prev.y = 0;
-  first = "yes";
 });
