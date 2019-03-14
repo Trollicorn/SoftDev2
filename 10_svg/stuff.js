@@ -1,7 +1,7 @@
 // Mohammed Uddin
 // SoftDev2 pd7
-//K #09: Connect the Dots
-// 2019-03-19
+//K #10: Ask Circles [Change || Die]
+// 2019-03-14
 
 //getting references to html elements
 var savage = document.getElementById("vimage");
