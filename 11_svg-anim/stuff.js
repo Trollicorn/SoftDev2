@@ -6,8 +6,7 @@
 //getting references to html elements
 var savage = document.getElementById("vimage");
 var creaty = true;
-var movey = false;
-var requestID = 0;
+var move = "no";
 
 savage.addEventListener('click',function(e){
   var cds = {"x":e.offsetX, "y":e.offsetY};
@@ -26,6 +25,8 @@ var circlify = function(x,y){
   c.setAttribute("fill", "purple");
   c.setAttribute("stroke", "black");
   c.setAttribute("first", "yes");
+  c.setAttribute("vx",1);
+  c.setAttribute("vy",1);
   c.addEventListener('click',function(e){
     creaty = false;
     if (c.getAttribute("first")=="yes"){
@@ -43,38 +44,22 @@ var circlify = function(x,y){
   return c;
 };
 
+var move = function(c){
+  c.setAttribute("cx",c.getAttribute("cx")+c.getAttribute("vx"));
+  c.setAttribute("cy",c.getAttribute("cy")+c.getAttribute("vy"));
+  savage.appendChild(c);
+}
+
 oofers = document.getElementById("clear");
 oofers.addEventListener('click',function(){
-  movey = false;
-  window.cancelAnimationFrame(requestID);
   while (savage.lastChild){
     savage.removeChild(savage.lastChild);
   }
 });
 
-var move = function(){
-  if (movey){
-    for (i = 0; i < savage.children.length; i++){
-      c = savage.children[i];
-      console.log(c);
-      cx = Number(c.getAttribute("cx"));
-      cy = parseInt(c.getAttribute("cy"),10);
-      vx = parseInt(c.getAttribute("vx"),10);
-      vy = parseInt(c.getAttribute("vy"),10);
-    //  console.log(""+cx+","+cy+","+vx,+","+vy);
-      c.setAttribute("cx",cx+vx);
-      c.setAttribute("cy",cy+vy);
-    }
-    requestID = window.requestAnimationFrame(move);
-  }
-}
-
 movers = document.getElementById("move");
 movers.addEventListener('click',function(){
-  if (movey){
-    return;
-  }else {
-    movey = true;
-    requestID = window.requestAnimationFrame(move);
+  for (int i = 0; i < savage.children.length; i++){
+    move(savage.children[i]);
   }
 });
