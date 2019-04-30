@@ -10075,6 +10075,21 @@ var data = `01M015,P.S. 015 ROBERTO CLEMENTE,20052006,89.4,,281,15,36,40,33,38,5
 32K564,BUSHWICK COMMUNITY HIGH SCHOOL                  ,20112012,,81.8,382,    ,    ,    ,    ,    ,    ,    ,    ,    ,    ,    ,382,    ,    ,20,5.2,36,9.4,14,1,1,0.3,137,35.9,235,61.5,7,1.8,169,44.2,213,55.8
 `
 var locks = "DBN,Name,schoolyear,fl_percent,frl_percent,total_enrollment,prek,k,grade1,grade2,grade3,grade4,grade5,grade6,grade7,grade8,grade9,grade10,grade11,grade12,ell_num,ell_percent,sped_num,sped_percent,ctt_num,selfcontained_num,asian_num,asian_per,black_num,black_per,hispanic_num,hispanic_per,white_num,white_per,male_num,male_per,female_num,female_per"
-locks = locks.split(',')
-locks = locks.map(function(x){return x}, )
-console.log(locks)
+locks = locks.split(',');
+var reeee = locks.length;
+//locks = locks.map(function(x){return x}, )
+//  console.log(locks);
+bazinga = data.split('\n');
+//console.log(bazinga);
+var arr = [];
+for (let i = 0; i < bazinga.length; i++){
+  var dict = {};
+  for (let j = 0; j < reeee; j++){
+    var stuff = bazinga[i].split(',');
+    dict[locks[j]] = stuff[j];
+  };
+  arr.push(dict);
+};
+//console.log(arr);
+sum_fl = arr.reduce(function(a,b){return isNaN(b) ? a : a+parseFloat(b['fl_percent']);},0);
+console.log(sum_fl);
