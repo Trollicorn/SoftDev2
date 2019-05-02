@@ -1,0 +1,146 @@
+Aim: Memoization++ And Life Beyond
+DN: File yesterday's work under 23_memoization
+
+gj fellas u chose college now dont worry about other path
+
+MS = Morgan Stanley
+is investment bank
+investment bank have no retail component
+issa bank
+
+lots alumn at MS
+oof finance crash phase out program
+woah MS internship on again!!!
+
+pick 20 of batch and they select 10 oof
+veri rare thing
+look good on resume 
+
+MS: resumes
+-action words
+-less is more
+-only list tech/lang if u know it
+-dont leave out tech/lang u know
+-appropriate email
+-PROOFREAD
+-goal of resume? (most important point(tooks lots of guesses))
+-need not fill page
+-name and contact info clear at top
+
+action words = passive vs active
+active shows you did
+
+dont go over a page
+
+no lies bro thats bad
+so list stuff you know
+-can safely list java
+-also python
+-html,css,flask
+-js good too bro
+
+no forget listing stuff u know
+professional email -> your name @domain
+
+remember to put contact info
+clear and to the point
+
+
+J
+O
+B
+
+-formal vs startup
+^attire-wise
+ MS is formal, dress nicely
+-etiquette
+^very different in formal v startup
+-you rep StuyCS
+-eduWorld != workPlace
+-fdbk loop
+^ask for feedback without being annoying
+
+
+The caching version:
+def memoize(f):
+	memo = {}
+	def helper(x):
+		if x not in memo:
+			memo[x] = f(x)
+		return memo[x]
+	return helper
+
+def fib(n):
+	if n==0:
+		return 0
+	elif n == 1:
+		return 1
+	else:
+	return fib(n-1) + fib(n2)
+
+The slicker version:
+def memoize(f):
+	memo = {}
+	def helper(x)L
+		if x not in memo:
+			memo[x] = f(x)
+		return memo[x]
+	return helper
+@memoize
+def fib(
+
+
+
+N: ememoization advantages
+-retain expressive elgance of orig fib implementationi
+-gain dynamic programmin/cachign speed improvement
+
+N:when to memoize?
+-fxn is deterministic(
+
+detour...
+Q:
+*args = lets u not specify argument, gives access to list of args 
+ie 
+def fxn(*args):
+	...
+
+a generalized memoizer:
+def memoize(fxn):
+	cache={}
+	def memoized fxn(*args):
+		if args in cache:
+			return cache[args]
+		result = fxn(*args)
+		cache[args] = result
+		return result
+	return memoized fxn
+
+task:
+brainstorm for final projects
+
+Q: what makes a good one?
+-scalability 
+-utility (real-world applicabiltiy) [cool but need not]
+-simplicity 
+-...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
